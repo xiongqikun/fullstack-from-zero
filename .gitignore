@@ -1,0 +1,26 @@
+# 这个文件告诉 Git：下面这些东西不要收进仓库。
+# 每一行是一条规则，以 # 开头的行是给人看的说明。1.9 课讲过怎么写。
+
+# macOS 自动生成的杂物
+.DS_Store
+._*
+
+# Python 运行时自动生成的缓存：删了还会再生成，不属于源文件
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# 学习工具每次运行都会重写的“上一次结果”：给导师看的，不是你的进度
+learner/last-result.json
+# 学习工具写文件写到一半时的临时文件：正常会自动删掉，只有电脑突然死机或断电时才会留下
+learner/.*.tmp
+
+# 只和这台电脑有关的调研记录，不外传
+docs/research/local-only/
+
+# Claude 桌面应用留在本机的文件
+.claude/settings.local.json
+.claude/.cc-writes/
+
+# 密钥、密码、令牌：永远不入库（行规 REPO-01）
+.env

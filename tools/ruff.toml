@@ -1,0 +1,7 @@
+# Lint settings for the course tool (tools/).
+#
+# The tool must run unchanged on Python 3.9 through 3.14, so ruff is told to
+# target 3.9: it will then never suggest or apply syntax that only newer
+# versions understand.  Rule selection is ruff's default set.
+target-version = "py39"
+line-length = 100

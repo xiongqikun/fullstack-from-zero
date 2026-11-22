@@ -1,0 +1,268 @@
+[
+  {
+    "id": "0.1",
+    "stage_dir": "00-orientation",
+    "folder": "01-first-steps",
+    "title": "第一次动手",
+    "briefs": [
+      "foundations-macos",
+      "pedagogy-prior-art",
+      "beginner-programming-pedagogy",
+      "ai-pairing-norms",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "The learner's very first sitting. A command must be typed within the first ten minutes; no essay before action. The 'start' state is a workspace with no learner/ files at all.\nStation a (认识学习界面和导师): the three things on screen (课文, 终端, 导师) and how a session runs (design 5.1). In the Claude desktop app the tutor can open the lesson in the Files pane and open a terminal tab for the learner; write the learner-facing instruction as 'say 开始上课 and the tutor opens both', marked per plan G6, with the fallback line. Explain the status line the tutor always prints first and what to do if it is missing. Then the intake questionnaire, answered to the tutor, who writes learner/profile.md with these headings: 学习目的（排序：自己动手写并上线 / 看得懂并管得住 AI / 求职）, 每周时间与固定时段, 一次能坐多久, 英文阅读（基本不读 / 借助翻译能读 / 能直接读）, GitHub（有没有账号、访问是否顺畅）, 想做的作品, 导师严格度（严格 / 适中 / 宽松，默认适中）, 以前用过终端吗. The check for 0.1a verifies that learner/profile.md exists and every heading has non-empty content; it must not judge the answers. The three modes 上课 / 干活 / 急救 get one line each here; details come in 0.4.\nStation b (终端三条命令): what the prompt shows (用户名@电脑名 当前文件夹 %), type then press Return, pwd, ls, clear, and Ctrl+C to stop anything. New commands: pwd, ls, clear only. Provoked error: a misspelt command such as pwdd, giving 'zsh: command not found: pwdd'. Do NOT use upper-case commands as the error example: the default macOS file system is case-insensitive and LS actually runs. The exercise is an ask check whose answer can only be read off the screen after running the commands (for example how many items ls shows in starter/hello-fx, or the last folder name pwd prints).\nStation c (运行并改动一个小程序): a program is a text file handed to an interpreter. Run 'python3 starter/hello-fx/convert.py' from the workspace root; open it with 'code starter/hello-fx/convert.py' (VS Code; mark per G6; say what the Workspace Trust dialog is if it appears), change the amount constant, save with Cmd+S, run again: predict, run, modify. No Python syntax teaching. Provoked error: a misspelt file name, giving Python's \"can't open file ... [Errno 2] No such file or directory\"; read it with the 报错三问; this is where rule META-01 is introduced. First journal entry through 'python3 tools/course.py journal'. The check: the amount constant differs from the starter's, the script exits 0 and prints its one line; if the learner broke the file, say which line Python complains about and how to get the original back (decide and document a safe way, for example a scenario that writes a pristine copy to the playground for comparison; never overwrite the learner's edited file silently).\nKeep the three learning-method remarks (why we predict first, why hints come in levels, why a journal line) to two lines each at the moment they first occur."
+  },
+  {
+    "id": "0.2",
+    "stage_dir": "00-orientation",
+    "folder": "02-files-and-paths",
+    "title": "文件、路径和代码的家",
+    "briefs": [
+      "foundations-macos",
+      "uv-packaging",
+      "git-norms",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Station a (路径): a path is an address; absolute vs relative; ~ . and .. ; cd, cd .., cd ~, ls <path>, Tab completion. Practise in a seeded folder maze built by a scenario under the playground (the tool creates ~/Developer/playground itself); the ask check wants the name of a file that can only be found by walking the maze. Mention once that names with spaces need quotes, no more.\nStation b (读懂报错和求助命令): provoked errors read with the 报错三问: 'cd Docments' -> no such file or directory; a full-width character inside a command (a full-width space or full-width letters: show exactly what zsh prints and how to spot the culprit; explain switching the input method to English before typing commands). Then 'man ls' and how to leave with q; note that on macOS many commands answer '--help' with a usage error instead of help, and show one real example. New commands: man (and the q key).\nStation c (给代码安个家): why code does not live in a cloud-synced folder: the Desktop and Documents folders of many Macs are synced by iCloud; say in plain words what goes wrong (files silently altered, moved to the cloud, duplicated on conflict). Rule WS-01 with real sources: Git's own FAQ on keeping repositories in synced folders, and Apple's documentation of Desktop and Documents in iCloud (open both today). 'mkdir -p ~/Developer' (explain -p). 'python3 tools/course.py doctor' and how to read its three groups. If doctor says the workspace itself is still inside a synced folder, the learner says to the tutor '帮我把课程安置到 ~/Developer': the tutor performs it (copy, verify, keep the old copy, then reopen Claude on the new folder; README has a stand-alone card for finding the tutor again). The learner may decline; either way the decision is recorded (state decisions.workspace_location) and the check accepts: ~/Developer exists AND (the workspace is outside synced folders OR a recorded decision to stay). Rule WS-02 (naming) with its exceptions from plan G12.\nTwo verified details worth one line each: macOS ships a special icon for a folder named Developer in the home folder (a small sign that this is the platform's own convention); and the default macOS file system does not distinguish upper and lower case in names. The WS-01 card can follow sample card FND-001 in section 7 of the standards-landscape brief (keep the plan's id WS-01)."
+  },
+  {
+    "id": "0.3",
+    "stage_dir": "00-orientation",
+    "folder": "03-how-software-is-made",
+    "title": "软件是怎么做出来的，规范从哪来",
+    "briefs": [
+      "skill-model",
+      "cs-fundamentals",
+      "standards-landscape",
+      "currency-mechanisms",
+      "project-mgmt-norms",
+      "fullstack-curricula"
+    ],
+    "notes": "A concept lesson that must still feel like doing. Every station ends in an auto-graded quiz check with at least six items and explanations for wrong answers.\nStation a (拆开一个真实的软件): the four parts of a web product (前端, 后端, 数据, 运行环境) using an exchange-rate dashboard as the specimen, drawn as one labelled ASCII diagram: what the user sees, what answers the page's requests, where the numbers are kept, which machine it all runs on. The course must not assume that the learner has a project of their own, or where it lives; add one optional line: '如果你有自己的看板，对导师说：带我看看我的看板由哪几块组成' (the tutor then reads it read-only in 干活 mode). Tell the learner this dashboard is the product the whole course keeps extending, and that they may choose a different one now (record it in learner/profile.md).\nStation b (从想法到上线，工程级差在哪): the life cycle 需求 -> 设计 -> 开发 -> 测试 -> 发布 -> 运维 in one picture, and what 'engineering-grade' adds to 'it runs on my machine': 可重复, 可追溯, 可协作, 可验证, 可恢复, each with one concrete example the learner will meet in stage 1. Use the fullstack-curricula brief's survey figures on what engineers actually spend their weeks doing (cite them) to show why norms matter.\nStation c (规范的四种来源和约束力): the heart of the course's purpose (plan G1). Teach the two axes of plan G3 (约束力 and 规则类型 are different things), the seven 规则类型 labels and how they map onto the four words of plan G1, and the decision procedure (ask in order, stop at the first yes). Use the one-line analogies and the two worked examples of 'type is not obligation' from section 3 of the standards-landscape brief. Then how to find who says so and which version, and that rules age at different speeds. Then the learner classifies six to eight real statements (examples: 'HTTP 状态码 404 表示没找到' = 标准; 'GitHub 要求贡献代码的账号开启双重验证' = 行业要求; '提交信息写成 feat: ……' = 惯例·事实标准; '项目根目录放一个 README' = 惯例·平台与工具; a rule quoted from a company style guide = 规范·组织; '我们团队合并前必须有一人评审' = 规范·团队约定; the colour theme of your editor = 个人偏好). Take each example's facts from the standards-landscape brief if it exists, otherwise verify each today. Give a short tour of STANDARDS.md at the workspace root (another agent writes it; refer to it by name and by the four words 标准 / 行业要求 / 惯例 / 规范). Rule META-02.\nStation b may use the 岗位期望 material (what teams expect of a junior engineer, with the labour-market data and its limits) from section 5 of the standards-landscape brief, clearly labelled 岗位期望 and never mixed with legal duties."
+  },
+  {
+    "id": "0.4",
+    "stage_dir": "00-orientation",
+    "folder": "04-manage-your-learning",
+    "title": "像管项目一样管学习",
+    "briefs": [
+      "project-mgmt-norms",
+      "pedagogy-prior-art",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "The learner's first management norms, applied to their own learning rather than talked about.\nStation a (任务、看板和完成的定义): a big goal is cut into tasks small enough to finish; each task has a definition of done. Here: a task is a station; the board is PROGRESS.md, produced by 'python3 tools/course.py status --write'; the definition of done of a lesson is: the check passed, each new rule restated in notes/my-rules.md, one journal line. Limit work in progress: one lesson open at a time. Rule PM-01, sourced from the Kanban Guide (the standards-landscape brief found a May 2025 edition: confirm) and the Scrum Guide 2020's Definition of Done (open both today; these are published community guides: 惯例·事实标准).\nStation b (每周计划和复盘): iteration = a fixed cycle of plan, do, look back. The learner fixes named days and times in learner/profile.md (at least three sittings a week is the recommendation; a ten-minute review sitting counts), writes their own 累了协议 there in three lines (what the tutor should offer when they are tired: 看示范 / 换轻的 / 存档收工 / 直接要答案并过几天重做), and learns the return routine after a long gap. A weekly review template is referred to as templates/weekly-review.md (another agent writes it: three questions 做了什么 / 卡在哪 / 下周改一件什么). Rule PM-02, sourced from the Scrum Guide 2020 (Sprint Retrospective).\nStation c (安全网和小关卡): a backup is a second copy somewhere else. Until lesson 1.12 gives the workspace a remote, make an interim copy: verify today one simple, safe way that works on a typical Mac from the terminal with commands already taught plus at most one new one (for example a dated zip archive placed in the Documents folder, which is fine for a single archive file even when iCloud syncs that folder), and show how to check the copy. Then 'python3 tools/course.py exam gate-0' (cold tasks drawn from 0.1-0.4) and two explain-back questions for the tutor. The check for 0.4c: the profile has a schedule and a 累了协议, PROGRESS.md exists, gate-0 has a recorded result."
+  },
+  {
+    "id": "1.1",
+    "stage_dir": "01-foundations",
+    "folder": "01-create-and-view",
+    "title": "终端：新建与查看",
+    "briefs": [
+      "foundations-macos",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "All practice happens in a playground scenario. Station a (新建): mkdir, touch, ls -l, ls -a; the one new concept is 选项 (an option changes how a command behaves); hidden files (names starting with a dot) appear here as a consequence, not as a second concept. Read one line of 'ls -l' output only as far as name, size and date; permissions are postponed (say so). Station b (查看): cat, less (q to leave, Space to page), head; use starter/hello-fx/rates.txt and files made by the scenario; what happens when cat is pointed at a folder or a non-text file (provoked error). Rule TERM-01 (不照抄看不懂的命令): how to inspect a command before running it (man, asking the tutor to explain each part), and the red flags a beginner must recognise without understanding them yet: sudo, rm -rf, a download piped straight into a shell. Find a real, citable source for this norm today, label it honestly (it is a 规范·本课程约定 backed by security guidance)."
+  },
+  {
+    "id": "1.2",
+    "stage_dir": "01-foundations",
+    "folder": "02-copy-move-delete",
+    "title": "终端：复制、移动、删除",
+    "briefs": [
+      "foundations-macos",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Station a (复制和移动): cp, cp -R, mv (renaming is moving). Worked steps in the playground; then the real thing: from the workspace root, 'cp -R starter/my-site ~/Developer/my-site' creates the learner's own site folder (state S1). Verify on macOS and warn about the classic trap: with BSD cp a trailing slash on the source folder copies its contents instead of the folder. The check: ~/Developer/my-site exists with index.html and style.css and is not nested one level too deep.\nStation b (删除和安全): the terminal has no Trash: rm is immediate and permanent. rm, rm -i, rm -r, rmdir. Wildcard * only as far as 'look first with ls, then delete with the same pattern'; quoting names that contain spaces; zsh's 'no matches found'. Never practise deletion outside the playground: the scenario builds a folder of junk files with a few keepers, and the check verifies that the junk is gone and the keepers survive. Rule TERM-02. State clearly which deletions belong in Finder (anything you might want back)."
+  },
+  {
+    "id": "1.3",
+    "stage_dir": "01-foundations",
+    "folder": "03-search",
+    "title": "终端：查找",
+    "briefs": [
+      "foundations-macos",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Station a (找内容): grep with -n, -i and -r on starter/hello-fx/rates.txt and on a seeded scenario; what 'no output' means (nothing matched; not an error). Station b (找文件): find . -name with the pattern in quotes (show what zsh does when the quotes are missing). No pipes, no regular expressions beyond a literal word. Both exercises are ask checks whose answers come from the seeded scenario (for example the line number where a word appears, the name of the folder that contains a given file). No new rule cards: instead revisit TERM-01 with one 'explain this command part by part' exercise."
+  },
+  {
+    "id": "1.4",
+    "stage_dir": "01-foundations",
+    "folder": "04-editor",
+    "title": "编辑器 VS Code",
+    "briefs": [
+      "foundations-macos",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "A GUI lesson: most steps cannot be executed by agents. Write them from the official VS Code documentation checked today (VS Code 1.145 at build time; do not assume the interface language of the learner's VS Code: quote menu and button labels in English with a Chinese gloss), mark them per plan G6, and keep them few. Station a: from ~/Developer/my-site run 'code .' (open the folder, not a file: rule ED-01); the Workspace Trust question; the Explorer; edit index.html (put the learner's name in the heading, rewrite the paragraph); Auto Save (File > Auto Save) versus Cmd+S and the unsaved-dot on the tab; 'open index.html' shows the page in the browser and a refresh shows each change (state S2). Station b: the Command Palette as the door to every feature (Cmd+Shift+P), quick open (Cmd+P), search across files (Cmd+Shift+F), the integrated terminal (Ctrl+`): it is the same shell in another window. Rule ED-02: add a small .editorconfig to my-site (root, utf-8, lf, final newline, two-space indent for html and css), sourced from the EditorConfig specification; verify today whether VS Code needs an extension to honour it and say so plainly. Checks are artifact checks on the files (index.html differs from the starter in the heading and the paragraph and still has its basic structure; .editorconfig exists with the expected keys), since the clicks cannot be checked."
+  },
+  {
+    "id": "1.5",
+    "stage_dir": "01-foundations",
+    "folder": "05-markdown-readme",
+    "title": "Markdown 与 README",
+    "briefs": [
+      "foundations-macos",
+      "project-mgmt-norms",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Station a (Markdown 语法): headings, lists, emphasis, inline code and fenced code blocks, links; preview in VS Code (Cmd+Shift+V, marked per G6). Name the specifications behind it (CommonMark and GitHub Flavored Markdown: confirm current versions today) and label them. The learner writes a short practice file in the playground; the check looks for the elements. Station b (README 是项目的门面): the conventional README answers five questions (这是什么 / 怎么看到效果 / 目录里有什么 / 现在的状态和打算 / 作者和许可, the last to be completed in 1.13). The learner writes ~/Developer/my-site/README.md (state S3). Rules DOC-01 and DOC-02 with sources checked today (GitHub's documentation about READMEs; a widely used README guide). The check: README.md exists, has one top-level heading, at least three sections, a list and a link or code block, and is not a copy of any template text. After this lesson comes gate-a: provide the EXAM tasks for it."
+  },
+  {
+    "id": "1.6",
+    "stage_dir": "01-foundations",
+    "folder": "06-first-commit",
+    "title": "Git：第一次提交",
+    "briefs": [
+      "git-norms",
+      "uv-packaging",
+      "standards-landscape",
+      "foundations-macos",
+      "currency-mechanisms"
+    ],
+    "notes": "The lesson most likely to go wrong on a learner's machine: build and test it in a simulation home that replicates plan G7 exactly (signing on, no gpg, vi as editor, less as pager, the global ignore file).\nStation a (为什么要版本管理，一次性设置): open with the '最终版_v3_真的最终版' question. The Git picture of plan 5a, with 远程 marked 以后再讲. One-time settings, each with what it does and its label: check that an identity exists without displaying the e-mail in the lesson ('git config --global user.name'); 'git config --global init.defaultBranch main' (say honestly why: on a Mac with Apple's Git, main comes from Xcode's bundled configuration, and the git-norms brief has the verified status of Git's built-in default and of Git 3.0); 'git config --global core.quotepath false' (Chinese file names display properly); 'git config --global core.editor \"code --wait\"' (otherwise Git opens vi; include a rescue box: how to leave vi with Esc :q! Return). Then the signing problem, met honestly: in a playground repository a first commit fails with Git's real error (paste it from the simulation); read it with the 报错三问; explain commit signing in three sentences and what kind of norm it is; the learner decides, with a recommendation: turn it off for now with 'git config --global commit.gpgsign false' after making a dated backup copy of ~/.gitconfig with cp (taught in 1.2), and return to proper signing in 1.11. Record the decision (state decisions.commit_signing). Rule GIT-02 (identity).\nStation b (第一次提交): in a scenario repository: git init, git status, git add <file>, git commit -m, git log --oneline; the loop 改 -> 暂存 -> 提交; pair every step with git status and the question '图会怎么变'; what 'nothing to commit' and 'untracked' mean. Add files by name; say when 'git add .' is acceptable (after reading git status) and why it is the classic accident.\nStation c (给 my-site 建仓库): transfer to the real thing: git init in ~/Developer/my-site and a first commit with a plain message (conventions come in 1.10); state S4. Rule GIT-01. The checks read Git state through machine-readable commands only.\nSection 1 of the standards-landscape brief lists three verified ways around the signing failure that do not touch global configuration, and its sample card on the signing blocker; reuse the verified error text. The learner, not the tutor, runs any global configuration change."
+  },
+  {
+    "id": "1.7",
+    "stage_dir": "01-foundations",
+    "folder": "07-read-diff",
+    "title": "Git：看懂改了什么",
+    "briefs": [
+      "git-norms",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Start state: S4 plus edits. Station a: git diff and git diff --staged; reading a diff line by line (the file header, @@, lines starting with - and +), with real output from the simulation and a 读懂这句 gloss; relate the two commands to the Git picture. Station b: git show, git log --stat, git log --oneline; the pager (less: q to leave, Space to page) as a provoked 'I am stuck' moment. The exercises are ask checks on a seeded scenario in which 'someone' changed three things (which file, which line, what was removed). Rule GIT-03. One 旧教程提醒 if the git-norms brief has a relevant one."
+  },
+  {
+    "id": "1.8",
+    "stage_dir": "01-foundations",
+    "folder": "08-undo-uncommitted",
+    "title": "Git：后悔药",
+    "briefs": [
+      "git-norms",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Only uncommitted changes; amending commits and recovering lost work are deferred to stage 2 (say so in one line). Station a: 'git restore <file>' discards changes in the working area and cannot be undone: practise in a playground scenario first, see with git diff what will be lost, then restore. Station b: 'git restore --staged <file>' takes something back off the packing table without touching the file; then a small decision table '我想撤销的是……' with three rows. 旧教程提醒: 'git checkout -- <file>' and 'git reset HEAD <file>' are the old spellings (since which Git version restore exists and its current status: take it from the git-norms brief, which verified the installed manual pages). Rule GIT-04. The exercise is a scenario with one file to discard, one to unstage and one to keep; the check verifies all three outcomes, and the feedback for a wrong outcome must not reveal the command."
+  },
+  {
+    "id": "1.9",
+    "stage_dir": "01-foundations",
+    "folder": "09-gitignore",
+    "title": "Git：什么不该进仓库",
+    "briefs": [
+      "git-norms",
+      "security-config-logging",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "One idea: a repository holds sources, not what can be regenerated, what is private, or what is huge. Station a: .gitignore patterns (a name, a folder/, *.ext, a leading ! only mentioned), 'git status --ignored', 'git check-ignore -v'. A Mac may already have a global ignore file (plan G7): have the learner look at theirs ('git config --global core.excludesfile', then cat it) and explain why .DS_Store never shows up; therefore demonstrate with files that are NOT globally ignored (for example a secret-token.txt, a drafts/ folder, a __pycache__/ folder, a .env file). Start from the official template collection (github/gitignore: confirm the URL and what a beginner should copy) and add a small .gitignore to my-site (state S5, at least three commits). Station b: a file that was already committed is not removed by adding it to the list: 'git rm --cached <file>'; and the correct reaction to a leaked secret: revoke or change the secret first, because history still contains it (rewriting history is not taught here). Rule REPO-01 must be labelled and sourced honestly (platform enforcement such as push protection, and security guidance: open the sources today); rule REPO-02."
+  },
+  {
+    "id": "1.10",
+    "stage_dir": "01-foundations",
+    "folder": "10-commit-conventions",
+    "title": "提交规范",
+    "briefs": [
+      "git-norms",
+      "standards-landscape",
+      "review-testing-practice",
+      "currency-mechanisms"
+    ],
+    "notes": "Station a (一次提交只做一件事): let the learner feel the problem in a scenario: a history where one commit mixes three unrelated changes and one of them must be understood or undone. Then make two separate commits from two unrelated edits by adding files one at a time (no 'git add -p'). Rule COMMIT-02. Station b (写好提交信息): Conventional Commits 1.0.0 (open the specification and its official Chinese translation today; quote the structure exactly): type, optional scope, colon and space, description; say plainly that the specification itself defines only feat and fix and that the other common types (docs, style, refactor, test, chore ...) come from tooling conventions built on it; a breaking-change mark only mentioned. The convention among Chinese-speaking teams of an English type with a Chinese description (take real examples from the git-norms brief); a body says why, not what. Label COMMIT-01 honestly: 惯例·事实标准; whether it is 必须 is each team's decision, and in this course it is 必须 from this lesson on. The often-repeated 50-character subject limit is a recommendation in Git's own manual, not a requirement: say so and cite it. A 找茬 exercise: five commit messages each with one fault. Then the learner makes commits on my-site until the last two follow the convention (state S6: at least five commits). The check matches the latest two subjects against the specification's pattern and gives specific feedback (missing colon, full-width colon, missing space, unknown type). After this lesson comes gate-b: provide EXAM tasks covering the commit loop, reading a diff, restore, ignore and message fault-finding."
+  },
+  {
+    "id": "1.11",
+    "stage_dir": "01-foundations",
+    "folder": "11-github-account",
+    "title": "GitHub：账号、安全与身份",
+    "briefs": [
+      "github-collab-ci",
+      "standards-landscape",
+      "git-norms",
+      "security-config-logging",
+      "foundations-macos",
+      "currency-mechanisms"
+    ],
+    "notes": "Almost nothing here can be executed by agents (no account, gh not installed): write from GitHub's official documentation and the gh manual checked today, mark per plan G6, and keep every step concrete. The learner creates the account themselves; the course never asks for or stores credentials.\nStation a (注册和双重验证): what GitHub is for; sign-up; two-factor authentication as a platform requirement (state the current policy exactly as GitHub documents it today), an authenticator app or a passkey, saving the recovery codes. Rule ACC-01.\nStation b (让电脑认识 GitHub): the first program the learner installs themselves: three sentences on what Homebrew is, then 'brew install gh'; just enough about PATH to explain why gh works right after installing; 'gh auth login' with the exact prompts and the answers to choose (take them from the manual), and 'gh auth status'. Explain in two lines why passwords no longer work for Git operations (旧教程提醒, with the date).\nStation c (提交邮箱隐私和签名的选择): the e-mail address in a commit becomes public in a public repository: GitHub's 'Keep my email addresses private' setting and the noreply address, and how to set user.email to it (the learner's choice; rule ACC-02). Commit signing revisited: the options are to leave it off (fine while learning) or to set up SSH signing (the simpler current method: summarise the documented steps and mark them 选做); record the decision.\nChecks must not use the network and must never read a token: accept gh being on PATH plus a self-report question for the login, and a recorded decision for station c.\nVerified today by the standards-landscape brief (re-confirm on GitHub's own pages and state it exactly as documented): two-factor authentication is mandatory for accounts that contribute code, with an enrolment period after notice; an authenticator (TOTP) app is the recommended primary method and a passkey is added afterwards; password authentication for Git operations is gone. Label ACC-01 行业要求 and name who enforces it (the platform). For station c: where the global gpg.ssh.program is an empty string (the case of plan G7, reproduced by the simulation home), SSH signing fails until it is unset ('git config --global --unset gpg.ssh.program'); include that step in the optional SSH-signing path."
+  },
+  {
+    "id": "1.12",
+    "stage_dir": "01-foundations",
+    "folder": "12-push-and-backup",
+    "title": "第一次推送和云端备份",
+    "briefs": [
+      "github-collab-ci",
+      "git-norms",
+      "uv-packaging",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Verify the Git mechanics in the simulation with a local bare repository standing in for GitHub; the gh lines come from the manual and are marked per plan G6.\nStation a (学习仓库入库): the workspace itself becomes a repository. First 'python3 tools/course.py doctor': if the workspace is still inside a synced folder, stop and settle that (lesson 0.2). The course ships a .gitignore at the workspace root: read it together. git init, read git status, then 'git add .' is legitimate here because the status was read and the ignore file is in place; the first commit follows the convention from 1.10 (for example 'chore: 导入课程材料') and its body says the course text was generated by Claude.\nStation b (推送到私有仓库): what a remote is (the last area of the Git picture); 'gh repo create <name> --private --source=. --remote=origin --push' (confirm every flag in the manual today), 'git remote -v', and from then on 'git push' after each sitting. Rule REMOTE-02: the short check before anything leaves the machine (read git status; search the tracked files for anything that looks like a secret or private data).\nStation c (验证备份真的能用): a backup that was never restored is a hope, not a backup. Clone the remote into the playground and compare it with the workspace (verify a comparison command in the simulation and show its real output), then remove the clone. Rule REMOTE-01. The check, without the network: the workspace is a repository with at least one commit, a remote named origin, an upstream for the current branch and nothing unpushed (compare with the remote-tracking ref)."
+  },
+  {
+    "id": "1.13",
+    "stage_dir": "01-foundations",
+    "folder": "13-publish-site",
+    "title": "把你的网页放到网上",
+    "briefs": [
+      "github-collab-ci",
+      "delivery-ops-2026",
+      "standards-landscape",
+      "web-security-2026",
+      "currency-mechanisms"
+    ],
+    "notes": "The first thing the learner can show another person. Online steps are written from GitHub's documentation checked today and marked per plan G6.\nStation a (公开仓库和许可证): before publishing, the REMOTE-02 check; then what a licence is and what it means to have none (open choosealicense.com today, including its page on having no licence); add a LICENSE file (recommend one common permissive licence and say plainly that the choice is the learner's) and finish the README's last section; commit. Rule PUB-01.\nStation b (用 GitHub Pages 上线): confirm today that GitHub Pages is available for public repositories on free accounts and how it is enabled; 'gh repo create my-site --public --source=. --remote=origin --push'; then the documented settings path to publish from the main branch (quote the English labels with a Chinese gloss); the address has the form https://<用户名>.github.io/my-site/ ; it can take a minute; open it on a phone.\nStation c (改一处、推送、看网页更新): the whole delivery loop in miniature: change, look at the diff, commit by the convention, push, reload. Name it: this loop is what later stages automate.\nChecks without the network: LICENSE, README.md and .gitignore exist in my-site; a remote exists and nothing is unpushed; an ask check accepts a URL of the documented form. State S7. Give the fallback from the delivery-ops brief if Pages is unavailable to the learner."
+  },
+  {
+    "id": "1.14",
+    "stage_dir": "01-foundations",
+    "folder": "14-errors-help-fresh",
+    "title": "排错、求助与“与时俱进”",
+    "briefs": [
+      "foundations-macos",
+      "pedagogy-prior-art",
+      "currency-mechanisms",
+      "standards-landscape",
+      "git-norms"
+    ],
+    "notes": "Station a (排错实验室): eight small broken situations built by scenarios, each attempted without the tutor first, using the 报错三问, and each with its own check: a file that is 'not found' because the learner is in the wrong folder; a misspelt command; 'not a git repository'; a commit that reports nothing to commit because nothing was staged; a command containing a full-width character; an unclosed quote (the dquote> prompt, left with Ctrl+C); being inside less or vi and getting out; a file that git add refuses because it is ignored (find out why with git check-ignore -v). Only skills taught so far. Keep the station inside the time budget by making each situation two minutes.\nStation b (怎么求助): the smallest example that still shows the problem; official documentation first and how to find it (man, the tool's own site, searching the exact error text); the question template: 目标 / 我做了什么 / 我期望什么 / 实际看到什么（原样贴报错）/ 版本. Refer to templates/ask-for-help.md (another agent writes it). Rule HELP-01 with sources opened today (Stack Overflow's guidance on a minimal reproducible example; 'How To Ask Questions The Smart Way' and its Chinese translation).\nStation c (判断一份资料是否过时): the 与时俱进 part of the course's purpose (plan G1). Three checks for any tutorial, answer or AI suggestion: its date, the version it talks about, and whether the official documentation still says the same; where release notes live for Git, VS Code and GitHub (URLs confirmed today); 'python3 tools/course.py fresh' and how to read it; a short list of things old tutorials still get wrong that the learner has already met in this stage (take verified items from the currency-mechanisms and git-norms briefs). Rule FRESH-01. The exercise: judge four short tutorial snippets as current or outdated and say which clue gave it away (quiz check)."
+  },
+  {
+    "id": "1.15",
+    "stage_dir": "01-foundations",
+    "folder": "15-review-ai-changes",
+    "title": "验收 AI 的改动",
+    "briefs": [
+      "ai-pairing-norms",
+      "review-testing-practice",
+      "standards-landscape",
+      "fullstack-curricula",
+      "currency-mechanisms"
+    ],
+    "notes": "The skill the learner will use every working day: judging a change someone else made.\nStation a (让 AI 干活，你来验收): switch to 干活 mode and ask the tutor for a small, real change to ~/Developer/my-site (for example a new section listing what the learner is studying). The tutor edits files and must not commit. The learner then looks: git status, git diff, the page in the browser, and an acceptance checklist (templates/ai-change-checklist.md, written by another agent: 改的是不是我要的 / 有没有多改 / 能不能正常显示 / 有没有新增文件 / 有没有不该出现的内容). Accept by committing it themselves, or reject with git restore. For simulation, a scenario applies a canned change in place of the tutor. Rule AI-01.\nStation b (找茬): a scenario repository in which an 'AI change' is waiting uncommitted with three planted problems: an unrelated file was also modified, a new file that looks like a key was added, and the proposed commit message has the wrong type. The learner finds all three (ask or quiz check) and cleans up with commands already taught.\nStation c (给 AI 立规矩): the project instruction file: what CLAUDE.md and AGENTS.md are and how current they are as conventions (take the verified facts from the ai-pairing-norms brief; label as an emerging 惯例 with sources and dates). The learner writes three rules of their own into ~/Developer/my-site/CLAUDE.md. Rule AI-02 (honest attribution of AI-assisted commits: state today's documented practice for the trailer line and label it honestly). Cite the evidence from the briefs on why review and verification are the skills that gained value.\nThe standards-landscape brief verified the current stewardship of the AGENTS.md convention and what major open-source bodies say about accountability for AI-assisted contributions (the human remains responsible): use it for AI-01 and AI-02, re-confirming today."
+  },
+  {
+    "id": "1.16",
+    "stage_dir": "01-foundations",
+    "folder": "16-stage-project-and-gate",
+    "title": "阶段作品与验收",
+    "briefs": [
+      "project-mgmt-norms",
+      "pedagogy-prior-art",
+      "standards-landscape",
+      "currency-mechanisms"
+    ],
+    "notes": "Station a (整理作品): my-site: README complete, the page online, history readable; the workspace: notes/my-rules.md has a line in the learner's own words for every rule id of stages 0-1 (the check lists the missing ids), journal entries exist, everything pushed. Station b (阶段验收): 'python3 tools/course.py exam gate-1': cold practical tasks in freshly generated folders, no hints; two explain-back questions (为什么这么做而不是那样) and one debugging task; the learner may run the oral part in a fresh conversation using gates/gate-1/examiner-prompt.md (another agent writes it). Say plainly what passing means and what happens after a fail (a short practice list, then a retest of only the failed parts). Provide this lesson's EXAM tasks as whole-stage tasks that combine skills (for example: build a small repository from a description, ignore the right files, make two conventional commits, find what changed in a prepared history). Station c (复盘和下一段): a retrospective with three questions (做得好的 / 要改的 / 下一步), estimated versus actual hours taken from the state file, an updated weekly plan, two questions of feedback on the course, and the sentence that triggers the next stage ('准备阶段 2'). Rule PM-03 with its source opened today."
+  }
+]

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "verified_on": "2026-11-19",
+  "note": "Versions read on the reference Mac (plan G7) on verified_on. Keys are the tool names of courselib.syllabus.TOOL_NAMES. 'command' prints the version; 'pattern' (a Python regular expression, searched line by line) captures it. Optional 'installed_in' names the lesson that installs a tool the learner does not have yet: until that lesson is done, fresh reports it as not installed yet instead of as a problem. Optional 'note' says where a version came from. 'fresh' compares installed versions with 'version'; for a tool whose major number is 0 the first two numbers count as the major version (0.13 -> 0.14 is a major change). Refresh this file only together with a re-verification of the affected lessons.",
+  "tools": {
+    "macos": {
+      "label": "macOS",
+      "version": "27.2.1",
+      "command": ["sw_vers", "-productVersion"],
+      "pattern": "^(\\d+(?:\\.\\d+)+)"
+    },
+    "zsh": {
+      "label": "zsh",
+      "version": "5.9",
+      "command": ["zsh", "--version"],
+      "pattern": "zsh (\\d+(?:\\.\\d+)+)"
+    },
+    "git": {
+      "label": "Git",
+      "version": "2.54.0",
+      "command": ["git", "--version"],
+      "pattern": "git version (\\d+(?:\\.\\d+)+)"
+    },
+    "python3": {
+      "label": "Python（第一个 python3）",
+      "version": "3.14.9",
+      "command": ["python3", "--version"],
+      "pattern": "Python (\\d+(?:\\.\\d+)+)"
+    },
+    "code": {
+      "label": "VS Code（code 命令）",
+      "version": "1.145.2",
+      "command": ["code", "--version"],
+      "pattern": "^(\\d+\\.\\d+\\.\\d+)\\s*$"
+    },
+    "uv": {
+      "label": "uv",
+      "version": "0.13.5",
+      "command": ["uv", "--version"],
+      "pattern": "uv (\\d+(?:\\.\\d+)+)"
+    },
+    "ruff": {
+      "label": "Ruff",
+      "version": "0.17.2",
+      "command": ["ruff", "--version"],
+      "pattern": "ruff (\\d+(?:\\.\\d+)+)"
+    },
+    "node": {
+      "label": "Node.js",
+      "version": "26.12.0",
+      "command": ["node", "--version"],
+      "pattern": "^v(\\d+(?:\\.\\d+)+)"
+    },
+    "npm": {
+      "label": "npm",
+      "version": "11.20.0",
+      "command": ["npm", "--version"],
+      "pattern": "^(\\d+(?:\\.\\d+)+)\\s*$"
+    },
+    "brew": {
+      "label": "Homebrew",
+      "version": "7.0.10",
+      "command": ["brew", "--version"],
+      "pattern": "Homebrew (\\d+(?:\\.\\d+)+)"
+    },
+    "gh": {
+      "label": "GitHub CLI（gh 命令）",
+      "version": "2.105.0",
+      "command": ["gh", "--version"],
+      "pattern": "gh version (\\d+(?:\\.\\d+)+)",
+      "installed_in": "1.11",
+      "note": "Not installed on the reference Mac on 2026-11-19 (lesson 1.11 installs it). The version is the latest release read on 2026-11-19 from the official release page https://github.com/cli/cli/releases/latest ('GitHub CLI 2.105.0', tag v2.105.0, released 2026-11-18), not from an installed copy. Re-read it from 'gh --version' when lesson 1.11 is next verified on a machine that has gh."
+    }
+  }
+}

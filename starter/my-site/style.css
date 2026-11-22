@@ -1,0 +1,12 @@
+/* 网页的样式：改一个值，保存，再刷新浏览器，就能看到变化。 */
+body {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.7;
+}
+
+h1 {
+  color: #0b5cad;
+}

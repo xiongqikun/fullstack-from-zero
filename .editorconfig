@@ -1,0 +1,19 @@
+# EditorConfig：告诉编辑器，这个项目里的文本文件统一用什么格式。第 1.4 课讲它。
+# 官网：https://editorconfig.org ；规范全文：https://spec.editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{md,json,html,css,js,yml,yaml}]
+indent_size = 2
+
+# Markdown 里行尾的两个空格表示换行，所以不自动删行尾空格
+[*.md]
+trim_trailing_whitespace = false

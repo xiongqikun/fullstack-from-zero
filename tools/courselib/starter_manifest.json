@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "note": "starter/ 下每个文件的原样（文本原样保存，其他内容用 base64）和 sha256。练习场景、网站状态和考试都从这里取原样，不读工作区里可能被改过的那一份。由 tools/dev/build_starter_manifest.py --write 生成，不要手改。",
+  "learner_edits": [
+    "starter/hello-fx/convert.py"
+  ],
+  "files": {
+    "starter/hello-fx/convert.py": {
+      "sha256": "2dce32d962f44ea0ca82e93944d3c507bcb59c69b9ef899841e6288029861f7d",
+      "text": "\"\"\"汇率换算小程序：把一笔美元换算成人民币，打印一行结果。\n\n运行方式：python3 starter/hello-fx/convert.py\n\"\"\"\n\n# 可以改的数都放在最上面。\nAMOUNT_USD = 100  # 要换算的金额，单位是美元\nUSD_TO_CNY = 7.10  # 1 美元换多少人民币。这是一个示例数字，不是真实汇率\n\n\ndef main():\n    amount_cny = AMOUNT_USD * USD_TO_CNY\n    print(f\"{AMOUNT_USD} 美元 ≈ {amount_cny:.2f} 人民币（按 1 美元 = {USD_TO_CNY:.2f} 人民币计算）\")\n\n\nif __name__ == \"__main__\":\n    main()\n"
+    },
+    "starter/hello-fx/rates.txt": {
+      "sha256": "7f8f991a3e43170d72231ff7bb924d1df49e636daff302c370d6a81d66a6e16d",
+      "text": "# 示例数据：1 美元可以换多少其他货币。数字是为练习编的，不是真实汇率。\n# 每行三列，用空格隔开：货币代码  中文名称  1 美元可换的数量\nCNY  人民币    7.10\nEUR  欧元      0.92\nJPY  日元      150.00\nGBP  英镑      0.79\nHKD  港币      7.80\nKRW  韩元      1350.00\nSGD  新加坡元  1.34\nAUD  澳元      1.52\n"
+    },
+    "starter/my-site/index.html": {
+      "sha256": "5ded7fb7aaa6a2ce6ad9fa74df1565c7989d58d3c9f3da30c3ba002c98b5e409",
+      "text": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>我的第一个网页</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <main>\n    <h1>你好，我是____</h1>\n\n    <p>这是我的第一个网页。我正在从零开始学习做软件。</p>\n\n    <ul>\n      <li>我会用终端管理文件</li>\n      <li>我会用 Git 记录每一次改动</li>\n      <li>我会把网页放到网上</li>\n    </ul>\n  </main>\n\n  <footer>\n    我常查的网页资料：<a href=\"https://developer.mozilla.org/zh-CN/\">MDN</a>\n  </footer>\n</body>\n</html>\n"
+    },
+    "starter/my-site/style.css": {
+      "sha256": "f42688aed8862b4e2566167c3cd4fa482092c0c1f422e1f1d056d96d7e00c3dd",
+      "text": "/* 网页的样式：改一个值，保存，再刷新浏览器，就能看到变化。 */\nbody {\n  max-width: 40rem;\n  margin: 2rem auto;\n  padding: 0 1rem;\n  font-family: system-ui, sans-serif;\n  line-height: 1.7;\n}\n\nh1 {\n  color: #0b5cad;\n}\n"
+    }
+  }
+}
